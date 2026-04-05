@@ -32,6 +32,7 @@ class ConversionViewModel @Inject constructor(
         performConversion()
     }
 
+    //Output is converted value rounded to two decimals unless input is invalid
     private fun performConversion() {
         val input = inputValue.toDoubleOrNull()
         if (input != null) {

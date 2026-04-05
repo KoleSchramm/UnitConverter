@@ -22,27 +22,19 @@ class ConversionUiTest {
         hiltRule.inject()
     }
 
+    //Test in to cm
     @Test
     fun testConversionInchesToCm() {
-        // Find input field and enter value
-        composeTestRule.onNodeWithTag("input_field").performTextInput("10")
-
-        // Result should be visible (10 * 2.54 = 25.40)
-        composeTestRule.onNodeWithTag("result_text").assertTextContains("25.40", substring = true)
+        composeTestRule.onNodeWithTag("input_field").performTextInput("12")
+        composeTestRule.onNodeWithTag("result_text").assertTextContains("30.48", substring = true)
     }
 
+    //Test cm to in
     @Test
     fun testSwitchConversionType() {
-        // Open dropdown
         composeTestRule.onNodeWithTag("conversion_dropdown").performClick()
-
-        // Select CM to Inches - wait for item to appear
         composeTestRule.onNodeWithTag("dropdown_item_CM_TO_INCHES").performClick()
-
-        // Enter value
-        composeTestRule.onNodeWithTag("input_field").performTextInput("25.4")
-
-        // Check result (25.4 / 2.54 = 10.00)
-        composeTestRule.onNodeWithTag("result_text").assertTextContains("10.00", substring = true)
+        composeTestRule.onNodeWithTag("input_field").performTextInput("30.48")
+        composeTestRule.onNodeWithTag("result_text").assertTextContains("12.00", substring = true)
     }
 }

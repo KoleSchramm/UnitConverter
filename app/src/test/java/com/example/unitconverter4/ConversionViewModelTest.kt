@@ -19,43 +19,38 @@ class ConversionViewModelTest {
 
     @Test
     fun `onInputValueChange updates result when input is valid`() {
-        // Given
-        val input = "10.0"
-        val expectedResult = 25.4
-        every { converter.convert(10.0, ConversionType.INCHES_TO_CM) } returns expectedResult
+        //If input is valid, result should be updated
+        val input = "12.0"
+        val expectedResult = 30.48
+        every { converter.convert(12.0, ConversionType.INCHES_TO_CM) } returns expectedResult
 
-        // When
         viewModel.onInputValueChange(input)
 
-        // Then
         assertEquals(input, viewModel.inputValue)
-        assertEquals("25.40", viewModel.result)
-        verify { converter.convert(10.0, ConversionType.INCHES_TO_CM) }
+        assertEquals("30.48", viewModel.result)
+        verify { converter.convert(12.0, ConversionType.INCHES_TO_CM) }
     }
 
     @Test
     fun `onInputValueChange clears result when input is invalid`() {
-        // When
+        //If input is invalid, result should be cleared
         viewModel.onInputValueChange("invalid")
 
-        // Then
         assertEquals("invalid", viewModel.inputValue)
         assertEquals("", viewModel.result)
     }
 
     @Test
     fun `onTypeChange updates result`() {
-        // Given
-        every { converter.convert(10.0, ConversionType.INCHES_TO_CM) } returns 25.4
-        every { converter.convert(10.0, ConversionType.CM_TO_INCHES) } returns 3.937
+        //If type changes, result should be updated
+        every { converter.convert(12.0, ConversionType.INCHES_TO_CM) } returns 30.48
+        every { converter.convert(12.0, ConversionType.CM_TO_INCHES) } returns 4.72
         
-        viewModel.onInputValueChange("10.0")
+        viewModel.onInputValueChange("12.0")
 
-        // When
         viewModel.onTypeChange(ConversionType.CM_TO_INCHES)
 
-        // Then
         assertEquals(ConversionType.CM_TO_INCHES, viewModel.selectedType)
-        assertEquals("3.94", viewModel.result)
+        assertEquals("4.72", viewModel.result)
     }
 }

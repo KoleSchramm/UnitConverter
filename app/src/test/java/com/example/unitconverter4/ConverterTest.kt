@@ -9,14 +9,14 @@ class ConverterTest {
 
     @Test
     fun testInchesToCm() {
-        val result = converter.convert(10.0, ConversionType.INCHES_TO_CM)
-        assertEquals(25.4, result, 0.01)
+        val result = converter.convert(12.0, ConversionType.INCHES_TO_CM)
+        assertEquals(30.48, result, 0.01)
     }
 
     @Test
     fun testCmToInches() {
-        val result = converter.convert(25.4, ConversionType.CM_TO_INCHES)
-        assertEquals(10.0, result, 0.01)
+        val result = converter.convert(30.48, ConversionType.CM_TO_INCHES)
+        assertEquals(12.0, result, 0.01)
     }
 
     @Test

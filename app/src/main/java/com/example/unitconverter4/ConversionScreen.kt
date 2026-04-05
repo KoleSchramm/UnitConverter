@@ -25,6 +25,7 @@ fun ConversionScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        //Title
         Text(
             text = "Converter",
             style = MaterialTheme.typography.headlineMedium
@@ -32,6 +33,7 @@ fun ConversionScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
+        //Dropdown Menu
         ExposedDropdownMenuBox(
             expanded = expanded,
             onExpandedChange = { expanded = !expanded }
@@ -66,6 +68,7 @@ fun ConversionScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        //Text field
         OutlinedTextField(
             value = viewModel.inputValue,
             onValueChange = { viewModel.onInputValueChange(it) },
@@ -78,6 +81,7 @@ fun ConversionScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
+        //Output
         Text(
             text = if (viewModel.result.isNotEmpty()) "Result: ${viewModel.result}" else "",
             style = MaterialTheme.typography.headlineSmall,

@@ -6,6 +6,7 @@ import javax.inject.Singleton
 @Singleton
 class Converter @Inject constructor() {
     fun convert(value: Double, type: ConversionType): Double {
+        //Returns conversion based on conversion type
         return when (type) {
             ConversionType.INCHES_TO_CM -> value * 2.54
             ConversionType.CM_TO_INCHES -> value / 2.54

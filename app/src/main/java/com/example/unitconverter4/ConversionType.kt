@@ -1,6 +1,7 @@
 package com.example.unitconverter4
 
 enum class ConversionType(val label: String) {
+    //Conversion types for converter class
     INCHES_TO_CM("Inches to Centimeters"),
     CM_TO_INCHES("Centimeters to Inches"),
     FAHRENHEIT_TO_CELSIUS("Fahrenheit to Celsius"),
